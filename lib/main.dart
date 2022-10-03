@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "chat app",
       theme:ThemeData(primarySwatch: Colors.brown),
-      home: const CounterApp(),
+      home:  LogIn(),
 
 
     );
