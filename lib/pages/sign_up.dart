@@ -7,7 +7,7 @@ class SignUp extends StatelessWidget {
     print(firstNameCOntroler.text);
     print(emailCOntroler.text);
     print(passwordCOntroler.text);
-    print(confirmPasswordCOntroler.text);
+    print(confirmPasswordControler.text);
     print("Sign Up Successfully");
   }
   final firstNameCOntroler = TextEditingController();

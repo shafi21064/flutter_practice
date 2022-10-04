@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:prac_one/chat_page.dart';
-import 'package:prac_one/sign_up.dart';
+import 'package:prac_one/pages/chat_page.dart';
+import 'package:prac_one/pages/sign_up.dart';
 import 'package:prac_one/state_full/counter.dart';
 
-import 'login.dart';
+import 'pages/login.dart';
 
 void main() {
   runApp(const MyApp());
