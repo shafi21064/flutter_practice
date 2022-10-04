@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:prac_one/pages/chat_page.dart';
+import 'package:prac_one/pages/sign_up.dart';
 
 
 class LogIn extends StatelessWidget {
    LogIn({Key? key}) : super(key: key);
 
-  void press(){
-    print(userNameControler.text);
-    print(passwordControler.text);
-    print("Login successful");
+   final _formKey = GlobalKey<FormState>();
+
+  void loginpress(context){
+    if(_formKey.currentState != null && _formKey.currentState!.validate()) {
+      print(userNameControler.text);
+      print(passwordControler.text);
+      print("Login successful");
+
+      Navigator.push(context,
+          MaterialPageRoute(
+              builder: (context) =>ChatPage()));
+
+    }
+  }
+
+  void signUpButton(context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
   }
 
   final userNameControler = TextEditingController();
@@ -21,6 +36,7 @@ class LogIn extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               "Let's sign in here..",
@@ -42,7 +58,7 @@ class LogIn extends StatelessWidget {
             ),
 
             Container(
-              height: 170,
+              height: 140,
               width: 200,
               margin: EdgeInsets.all(10),
               decoration: BoxDecoration(
@@ -58,25 +74,49 @@ class LogIn extends StatelessWidget {
               )
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: TextField(
-                controller: userNameControler,
-                decoration:InputDecoration(
-                  hintText: "User Name",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: TextField(
-                controller: passwordControler,
-                obscureText: true,
-                decoration:InputDecoration(
-                  hintText: "Password",
-                  border: OutlineInputBorder(),
-                ),
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: TextFormField(
+                      validator: (value){
+                        if(value != null && value.isNotEmpty && value.length < 5){
+                          return "Please input more than 5 charecter";
+                        } else if (value != null && value.isEmpty){
+                          return "Please input a username";
+                        }
+                        return null;
+                      },
+                      controller: userNameControler,
+                      decoration:InputDecoration(
+                        hintText: "User Name",
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: TextFormField(
+                      validator: (value){
+                        if(value != null && value.isNotEmpty && value.length < 5){
+                          return "Please input more than 5 character";
+                        } else if (value != null && value.isEmpty){
+                          return "Please input a password";
+                        }
+                        return null;
+                      },
+                      controller: passwordControler,
+                      obscureText: true,
+                      decoration:InputDecoration(
+                        hintText: "Password",
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
 
@@ -88,7 +128,7 @@ class LogIn extends StatelessWidget {
                   bottom: 10
               ),
               child: ElevatedButton(onPressed: (){
-                  press();
+                  loginpress(context);
                 },
                     child: Text(
                         "Log In",
@@ -101,7 +141,7 @@ class LogIn extends StatelessWidget {
              InkWell(
                splashColor: Colors.black,
                onTap: (){
-                 press();
+                signUpButton(context);
                },
                onDoubleTap: (){
                  print("double tap");
@@ -111,8 +151,8 @@ class LogIn extends StatelessWidget {
                },
                child: Column(
                  children: [
-                   Text("find me on"),
-            Text("Facebook"),
+                   Text("Don't have an account?"),
+            Text("Sign up"),
                  ],
                ),
              ),

@@ -4,6 +4,11 @@ import 'package:prac_one/Widget/send_page.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({Key? key}) : super(key: key);
+  
+  // void logOutButton(){
+  //   Navigator.pop(context);
+  //   print("Logged Out");
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -11,21 +16,22 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "Hello ...!",
-          style: TextStyle(color: Colors.blue,
+          textAlign: TextAlign.center,
+          style: TextStyle(
               fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
-            print("pressed");
+            Navigator.pop(context);
+            print("Logged Out");
           },
               icon: Icon(Icons.logout,
-                color: Colors.blue,)
+                )
           )
         ],
       ),
-
 
 
       body: Column(

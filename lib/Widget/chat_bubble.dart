@@ -11,7 +11,6 @@ class LeftBubble extends StatelessWidget {
     return  Align(
       alignment: Alignment.centerLeft,
       child: Container(
-
         padding: EdgeInsets.all(12),
         child:
         Column(

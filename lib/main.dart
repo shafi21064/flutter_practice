@@ -16,8 +16,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "chat app",
-      theme:ThemeData(primarySwatch: Colors.brown),
-      home:  SignUp(),
+      theme:ThemeData(
+          primarySwatch: Colors.brown,
+          appBarTheme: AppBarTheme(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.black
+          )
+      ),
+      home:  LogIn(),
 
 
     );
