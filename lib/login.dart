@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 
 
 class LogIn extends StatelessWidget {
-  const LogIn({Key? key}) : super(key: key);
+   LogIn({Key? key}) : super(key: key);
 
   void press(){
-    print("pressed");
+    print(userNameControler.text);
+    print(passwordControler.text);
+    print("Login successful");
   }
+
+  final userNameControler = TextEditingController();
+  final passwordControler = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +44,7 @@ class LogIn extends StatelessWidget {
             Container(
               height: 170,
               width: 200,
-              margin: EdgeInsets.only(top: 10),
+              margin: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.fitHeight,
@@ -50,11 +55,38 @@ class LogIn extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                     Radius.circular(15)
                 ),
-              ),
+              )
+            ),
 
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: TextField(
+                controller: userNameControler,
+                decoration:InputDecoration(
+                  hintText: "User Name",
+                  border: OutlineInputBorder(),
+                ),
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.all(25.0),
+              padding: const EdgeInsets.all(5.0),
+              child: TextField(
+                controller: passwordControler,
+                obscureText: true,
+                decoration:InputDecoration(
+                  hintText: "Password",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  top: 10,
+                  bottom: 10
+              ),
               child: ElevatedButton(onPressed: (){
                   press();
                 },

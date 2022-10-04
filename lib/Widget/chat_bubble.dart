@@ -30,7 +30,6 @@ class LeftBubble extends StatelessWidget {
 
         ),
 
-
         margin: EdgeInsets.only(
             left: 30,
             right: 30,
