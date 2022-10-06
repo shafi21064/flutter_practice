@@ -3,22 +3,22 @@ import 'package:prac_one/Widget/chat_bubble.dart';
 import 'package:prac_one/Widget/send_page.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
-  
-  // void logOutButton(){
-  //   Navigator.pop(context);
-  //   print("Logged Out");
-  // }
+
+   ChatPage({Key? key, required this.userName}) : super(key: key);
+
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Hello ...!",
+          "Hello $userName!",
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontWeight: FontWeight.bold),
+              fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
