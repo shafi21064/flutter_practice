@@ -14,7 +14,7 @@ class LogIn extends StatelessWidget {
       print(passwordControler.text);
       print("Login successful");
 
-      Navigator.push(context,
+      Navigator.pushReplacement(context,
           MaterialPageRoute(
               builder: (context) =>ChatPage(userName: userNameControler.text,)));
 
