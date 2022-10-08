@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:prac_one/Widget/login_form.dart';
 import 'package:prac_one/pages/chat_page.dart';
 import 'package:prac_one/pages/sign_up.dart';
+import 'package:prac_one/pages_style/style.dart';
 
 
 class LogIn extends StatelessWidget {
@@ -38,7 +40,7 @@ class LogIn extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               "Let's sign in here..",
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.black45,
@@ -47,7 +49,7 @@ class LogIn extends StatelessWidget {
                   wordSpacing: 3
               ),
             ),
-            Text(
+            const Text(
               "Welcome back! \n You've been miss! ",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 15,
@@ -60,8 +62,8 @@ class LogIn extends StatelessWidget {
             Container(
               height: 140,
               width: 200,
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.fitHeight,
 
@@ -81,45 +83,38 @@ class LogIn extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(5.0),
-                    child: TextFormField(
+                    child: LogInPageForm(
+                      hintText: "User Name",
                       validator: (value){
                         if(value != null && value.isNotEmpty && value.length < 5){
-                          return "Please input more than 5 charecter";
+                          return "Please input more than 5 character";
                         } else if (value != null && value.isEmpty){
                           return "Please input a username";
                         }
                         return null;
                       },
                       controller: userNameControler,
-                      decoration:InputDecoration(
-                        hintText: "User Name",
-                        border: OutlineInputBorder(),
-                      ),
                     ),
                   ),
 
                   Padding(
                     padding: const EdgeInsets.all(5.0),
-                    child: TextFormField(
+                    child: LogInPageForm(
                       validator: (value){
-                        if(value != null && value.isNotEmpty && value.length < 5){
-                          return "Please input more than 5 character";
-                        } else if (value != null && value.isEmpty){
+                        if (value != null && value.isEmpty){
                           return "Please input a password";
                         }
                         return null;
                       },
+                      passwordView: true,
+                      hintText: "Password",
                       controller: passwordControler,
-                      obscureText: true,
-                      decoration:InputDecoration(
-                        hintText: "Password",
-                        border: OutlineInputBorder(),
                       ),
-                    ),
                   ),
-                ],
+                ]
               ),
             ),
+
 
             Padding(
               padding: const EdgeInsets.only(
@@ -131,7 +126,7 @@ class LogIn extends StatelessWidget {
               child: ElevatedButton(onPressed: (){
                   loginpress(context);
                 },
-                    child: Text(
+                    child: const Text(
                         "Log In",
                       style: TextStyle(
                         fontSize: 20,
@@ -151,16 +146,15 @@ class LogIn extends StatelessWidget {
                  print("long press");
                },
                child: Column(
-                 children: [
+                 children: const [
                    Text("Don't have an account?"),
             Text("Sign up"),
                  ],
                ),
              ),
-
           ],
         ),
-      ),
+      )
     );
   }
 }

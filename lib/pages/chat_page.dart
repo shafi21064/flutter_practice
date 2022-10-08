@@ -4,7 +4,7 @@ import 'package:prac_one/Widget/send_page.dart';
 
 class ChatPage extends StatelessWidget {
 
-   ChatPage({Key? key, required this.userName}) : super(key: key);
+   const ChatPage({Key? key, required this.userName}) : super(key: key);
 
   final String userName;
 
@@ -15,7 +15,7 @@ class ChatPage extends StatelessWidget {
         title: Text(
           "Hello $userName!",
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
               fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -27,7 +27,7 @@ class ChatPage extends StatelessWidget {
             Navigator.pushReplacementNamed(context,'/');
             print("Logged Out");
           },
-              icon: Icon(Icons.logout,
+              icon: const Icon(Icons.logout,
                 )
           )
         ],
@@ -42,8 +42,8 @@ class ChatPage extends StatelessWidget {
                 itemBuilder: (context, index){
 
                   return index % 2 == 0
-                      ?LeftBubble(message: "hi")
-                      :RightBubble(message: "shafi");
+                      ?const LeftBubble(message: "hi")
+                      :const RightBubble(message: "shafi");
                   }
 
             ),

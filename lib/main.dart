@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: "chat app",
       theme:ThemeData(
           primarySwatch: Colors.brown,
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
               backgroundColor: Colors.blue,
               foregroundColor: Colors.black
           )
