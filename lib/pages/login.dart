@@ -3,6 +3,7 @@ import 'package:prac_one/Widget/login_form.dart';
 import 'package:prac_one/pages/chat_page.dart';
 import 'package:prac_one/pages/sign_up.dart';
 import 'package:prac_one/pages_style/style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class LogIn extends StatelessWidget {
@@ -29,10 +30,23 @@ class LogIn extends StatelessWidget {
 
   final userNameControler = TextEditingController();
   final passwordControler = TextEditingController();
+  final _maiUrl = "https://github.com/shafi21064";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: (){
+                signUpButton(context);
+              },
+              icon: Icon(Icons.account_box)
+          )
+        ],
+      ),
 
       body: Center(
         child: Column(
@@ -60,7 +74,7 @@ class LogIn extends StatelessWidget {
             ),
 
             Container(
-              height: 140,
+              height: 100,
               width: 200,
               margin: const EdgeInsets.all(10),
               decoration: const BoxDecoration(
@@ -117,12 +131,7 @@ class LogIn extends StatelessWidget {
 
 
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: 10,
-                  bottom: 10
-              ),
+              padding: const EdgeInsets.all(5.00),
               child: ElevatedButton(onPressed: (){
                   loginpress(context);
                 },
@@ -136,9 +145,11 @@ class LogIn extends StatelessWidget {
             ),
              InkWell(
                splashColor: Colors.black,
-               onTap: (){
-                signUpButton(context);
-               },
+               onTap: () async {
+                 if (!await launch(_maiUrl)) {
+                 throw 'Could not launch this';
+                 }
+                 },
                onDoubleTap: (){
                  print("double tap");
                },
@@ -148,7 +159,13 @@ class LogIn extends StatelessWidget {
                child: Column(
                  children: const [
                    Text("Don't have an account?"),
-            Text("Sign up"),
+            Text(
+                "Github",
+              style: TextStyle(
+                color: Colors.blueGrey,
+              ),
+
+            ),
                  ],
                ),
              ),
