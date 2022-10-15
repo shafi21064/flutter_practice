@@ -3,6 +3,7 @@ import 'package:prac_one/Widget/login_form.dart';
 import 'package:prac_one/pages/chat_page.dart';
 import 'package:prac_one/pages/sign_up.dart';
 import 'package:prac_one/pages_style/style.dart';
+import 'package:social_media_buttons/social_media_buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -159,16 +160,24 @@ class LogIn extends StatelessWidget {
                child: Column(
                  children: const [
                    Text("Don't have an account?"),
-            Text(
-                "Github",
-              style: TextStyle(
-                color: Colors.blueGrey,
-              ),
 
-            ),
                  ],
                ),
              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                SocialMediaButton.github(
+                  url: "https://github.com/shafi21064",
+                  color: Colors.blue,
+                ),
+
+                SocialMediaButton.facebook(
+                  url: "https://www.facebook.com/shadikul.shafi",
+                  color: Colors.blue,
+                )
+              ],
+            ),
           ],
         ),
       )
