@@ -18,19 +18,18 @@ class LeftBubble extends StatelessWidget {
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-          Text(
-          "${entitity.text}",
-          style: TextStyle(fontSize: 24,
-              color: Colors.white
-          ),
-        ),
-            if(entitity.imageUrl != null)
-              Image.network(
-                '${entitity.imageUrl}',
-                width: 250,height: 150,fit: BoxFit.fitWidth,
+            Text(
+              "${entitity.text}",
+              style: TextStyle(fontSize: 24,
+                  color: Colors.white
               ),
-
-          ],
+            ),
+          if (entitity.imageUrl != null)
+            Image.asset(
+              '${entitity.imageUrl}',
+              width: 250,height: 150,fit: BoxFit.fitWidth,
+      )
+      ],
 
         ),
 

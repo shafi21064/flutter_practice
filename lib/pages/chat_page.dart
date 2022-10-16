@@ -5,9 +5,37 @@ import 'package:prac_one/models/chat_messag.dart';
 
 class ChatPage extends StatelessWidget {
 
-   const ChatPage({Key? key, required this.userName}) : super(key: key);
+  final userName;
+    ChatPage({Key? key, required this.userName}) : super(key: key);
 
-  final String userName;
+
+   List<ChatMessage> _message = [
+     ChatMessage(
+         text: "1st text",
+         id: "1",
+         timeStamp: 1234567,
+         author: Author(userName: "shafi")),
+
+     ChatMessage(
+         text: "2nd text",
+         id: "1",
+         timeStamp: 1234567,
+         imageUrl: 'assets/download.jpg',
+         author: Author(userName: "shafi")),
+
+     ChatMessage(
+         text: "3rd text",
+         id: "1",
+         timeStamp: 1234567,
+         imageUrl: 'assets/download.jpg',
+         author: Author(userName: "jane")),
+
+     ChatMessage(
+         text: "1st text",
+         id: "1",
+         timeStamp: 1234567,
+         author: Author(userName: "shafi")),
+   ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,24 +67,16 @@ class ChatPage extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: _message.length,
                 itemBuilder: (context, index){
 
-                  return index % 2 == 0
-                      ?LeftBubble(
-                    entitity: ChatMessage(
-                      id: "1234",
-                      text: "hi",
-                      timeStamp: DateTime.now().millisecondsSinceEpoch,
-                      author: Author(userName: "Shafi")
-                    ))
-                      :RightBubble(
-                      entitity: ChatMessage(
-                          id: "1234",
-                          text: "hi",
-                          timeStamp: DateTime.now().millisecondsSinceEpoch,
-                          author: Author(userName: "Shafi")
-                  ));
+                  return _message[index].author.userName == 'shafi'
+                      ?RightBubble(
+                    entitity: _message[index]
+                  )
+                      :LeftBubble(
+                      entitity: _message[index]
+                  );
                   }
 
             ),
