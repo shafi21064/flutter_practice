@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:prac_one/models/chat_messag.dart';
 
 class LeftBubble extends StatelessWidget {
-  final String message;
+
+  final ChatMessage entitity;
 
 
-  const LeftBubble({Key? key, required this.message}) : super(key: key);
+  const LeftBubble({Key? key, required this.entitity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +18,18 @@ class LeftBubble extends StatelessWidget {
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("$message",
-              style: TextStyle(fontSize: 24,
-                  color: Colors.white
+          Text(
+          "${entitity.text}",
+          style: TextStyle(fontSize: 24,
+              color: Colors.white
+          ),
+        ),
+            if(entitity.imageUrl != null)
+              Image.network(
+                '${entitity.imageUrl}',
+                width: 250,height: 150,fit: BoxFit.fitWidth,
               ),
-            ),
-            Image.network(
-              'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-              width: 250,height: 150,fit: BoxFit.fitWidth,
-            ),
+
           ],
 
         ),
@@ -47,9 +52,9 @@ class LeftBubble extends StatelessWidget {
 }
 
 class RightBubble extends StatelessWidget {
-  final String message;
+  final ChatMessage entitity;
 
-  const RightBubble({Key? key, required this.message}) : super(key: key);
+  const RightBubble({Key? key, required this.entitity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,17 +67,17 @@ class RightBubble extends StatelessWidget {
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("$message",
+            Text("${entitity.text}",
               style: TextStyle(fontSize: 24,
                   color: Colors.white
               ),
             ),
-            Image.asset(
-              'assets/download.jpg',
+            if (entitity.imageUrl != null)
+              Image.asset(
+              '${entitity.imageUrl}',
               width: 250,height: 150,fit: BoxFit.fitWidth,
             ),
           ],
-
         ),
 
 

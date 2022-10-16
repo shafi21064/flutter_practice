@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prac_one/Widget/chat_bubble.dart';
 import 'package:prac_one/Widget/send_page.dart';
+import 'package:prac_one/models/chat_messag.dart';
 
 class ChatPage extends StatelessWidget {
 
@@ -42,8 +43,20 @@ class ChatPage extends StatelessWidget {
                 itemBuilder: (context, index){
 
                   return index % 2 == 0
-                      ?const LeftBubble(message: "hi")
-                      :const RightBubble(message: "shafi");
+                      ?LeftBubble(
+                    entitity: ChatMessage(
+                      id: "1234",
+                      text: "hi",
+                      timeStamp: DateTime.now().millisecondsSinceEpoch,
+                      author: Author(userName: "Shafi")
+                    ))
+                      :RightBubble(
+                      entitity: ChatMessage(
+                          id: "1234",
+                          text: "hi",
+                          timeStamp: DateTime.now().millisecondsSinceEpoch,
+                          author: Author(userName: "Shafi")
+                  ));
                   }
 
             ),
